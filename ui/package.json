@@ -2,7 +2,7 @@
   "name": "quasar-ui-qverticalexpansionitem",
   "version": "0.0.1",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
-  "description": "My awesome component",
+  "description": "Vertical Expansion for Quasar CLI, Vue CLI and UMD",
   "license": "MIT",
   "module": "dist/index.esm.js",
   "main": "dist/index.common.js",
@@ -17,26 +17,51 @@
     "dev:electron": "cd dev && yarn 'dev:electron' && cd ..",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
-    "build:css": "node build/script.css.js"
+    "build:css": "node build/script.css.js",
+    "build:api": "node build/build.api.js"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/hawkeye64/quasar-ui-qverticalexpansion.git"
   },
-  "bugs": "",
-  "homepage": "",
+  "bugs": "https://github.com/hawkeye64/quasar-ui-qverticalexpansion/issues",
+  "homepage": "https://github.com/hawkeye64/quasar-ui-qverticalexpansion",
+  "keywords": [
+    "quasar",
+    "quasarframework",
+    "vertical",
+    "expansion"
+  ],
+  "vetur": {
+    "tags": "dist/vetur/tags.json",
+    "attributes": "dist/vetur/attributes.json"
+  },
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.21.0",
-    "@rollup/plugin-commonjs": "^11.0.1",
-    "@rollup/plugin-json": "^4.0.1",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "@vue/eslint-config-standard": "^5.1.0",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@vue/eslint-config-standard": "^5.1.1",
     "autoprefixer": "^9.7.4",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-transform-relative-paths": "^0.1.0",
     "chalk": "^3.0.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-quasar": "^1.0.0-alpha.18",
@@ -44,12 +69,12 @@
     "eslint-plugin-vue": "^6.1.2",
     "fs-extra": "^8.1.0",
     "node-sass": "^4.13.1",
-    "open": "^7.0.1",
+    "open": "^7.0.2",
     "postcss": "^7.0.26",
     "postcss-rtl": "^1.5.0",
     "quasar": "^1.8.3",
     "quasar-json-api": "^0.0.20",
-    "rimraf": "^3.0.1",
+    "rimraf": "^3.0.2",
     "rollup": "^1.31.0",
     "uglify-es": "^3.3.9",
     "zlib": "^1.0.5"

@@ -14,6 +14,10 @@ require('./script.clean.js')
 console.log(` 📦 Building ${green('v' + require('../package.json').version)}...${parallel ? blue(' [multi-threaded]') : ''}\n`)
 
 createFolder('dist')
+createFolder('dist/api')
+createFolder('dist/vetur')
 
+// require('./script.javascript')
+// require('./script.css')
 runJob(join(__dirname, './script.javascript.js'))
 runJob(join(__dirname, './script.css.js'))
