@@ -4,7 +4,7 @@
       <q-markdown>
 Two components are used to make the following examples: `QVerticalExpansionGroup` and `QVerticalExpansionItem`. The QVerticalExpansionGroup must always be a parent to QVerticalExpansionItem, but you can have many child QVerticalExpansionItem's that you want.
 
-By default, clicking the titlebar expands/contracts the QVerticalExpansionItem. Also, by default, you can only have one vertical expanson tab panel open at a time. However, you can change these defaults with properties, as explained below.
+By default, clicking the titlebar expands/contracts the QVerticalExpansionItem. Also, by default, you can only have one vertical expansion tab panel open at a time. However, you can change these defaults with properties, as explained below.
       </q-markdown>
       <example-title title="QVerticalExpansionItem" />
       <example-viewer title="Basic" file="Basic" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
