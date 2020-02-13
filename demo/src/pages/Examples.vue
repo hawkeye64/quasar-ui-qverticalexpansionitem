@@ -36,6 +36,7 @@ Using the `multiple` property on `QVerticalExpansionGroup` allows you to have mu
       <example-viewer title="Color" file="Color" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Images" file="Images" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Images Multiple" file="ImagesMultiple" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Components" file="Components" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
     </div>
   </hero>
@@ -86,6 +87,7 @@ export default {
     this.addToToc('Color', 2)
     this.addToToc('Images', 2)
     this.addToToc('Images Multiple', 2)
+    this.addToToc('Components', 2)
 
     this.toc = this.tempToc
   },
