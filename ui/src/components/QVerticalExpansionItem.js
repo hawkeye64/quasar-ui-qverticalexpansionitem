@@ -1,5 +1,6 @@
 import { QCard, QSeparator, QCardSection, QIcon } from 'quasar'
 import { slot } from 'quasar/src/utils/slot.js'
+import { stopAndPrevent } from 'quasar/src/utils/event.js'
 
 let uid = 0
 
@@ -156,6 +157,13 @@ export default {
       : this.parent.__deactivateTab(this.name, false)
     },
 
+    __toggleKeyboard (e) {
+      if (e.keyCode === 13) {
+        this.toggle()
+        stopAndPrevent(e)
+      }
+    },
+
     __findPanel () {
       // find this panel in list of panels
       return this.parent.panels.find(panel => panel.name === this.name)
@@ -236,7 +244,7 @@ export default {
       if (this.innerOpened !== true) return
 
       return h(QCardSection, {
-        staticClass: 'q-pa-none',
+        staticClass: 'q-pa-none q-ma-none relative-position',
         style: this.visibilityStyle
       }, slot(this, 'default'))
     }
@@ -257,6 +265,9 @@ export default {
       props: {
         square: true,
         flat: this.parent.flat
+      },
+      on: {
+        keyup: this.__toggleKeyboard
       },
       attrs: {
         tabindex: this.computedTabIndex,
