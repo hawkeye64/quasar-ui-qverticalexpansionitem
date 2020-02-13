@@ -14,7 +14,7 @@
         expandedIcon="expand_less"
         :name="tab.name"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
   </div>

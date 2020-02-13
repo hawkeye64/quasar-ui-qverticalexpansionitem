@@ -11,7 +11,7 @@
         expandedIcon="expand_less"
         :disable="tab.index % 2 === 0"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
 
@@ -28,7 +28,7 @@
         :disable="tab.index % 2 === 0"
         click-icon
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
   </div>

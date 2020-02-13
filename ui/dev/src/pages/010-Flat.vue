@@ -13,7 +13,7 @@
         expandIcon="expand_more"
         expandedIcon="expand_less"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
 
@@ -30,7 +30,7 @@
         expandIcon="expand_more"
         expandedIcon="expand_less"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
 
@@ -49,7 +49,7 @@
         expandIcon="expand_more"
         expandedIcon="expand_less"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
 

@@ -11,7 +11,7 @@
         expandedIcon="expand_less"
         label-position="right"
       >
-        {{ lorem }}
+        <div class="fit q-pa-md" >{{ lorem }}</div>
       </q-vertical-expansion-item>
     </q-vertical-expansion-group>
   </q-page>
