@@ -1,4 +1,4 @@
-import { QCard, QSeparator, QCardSection, QIcon, QBtn } from 'quasar'
+import { QCard, QSeparator, QCardSection, QIcon } from 'quasar'
 import { slot } from 'quasar/src/utils/slot.js'
 
 let uid = 0
@@ -32,14 +32,14 @@ export default {
       default: 'sm',
       validator: v => ['xs', 'sm', 'md', 'lg', 'xl'].includes(v)
     },
-    clickExpand: Boolean,
-    expandIconClass: [ Array, String, Object ],
-    labelPosition: {
+    clickIcon: Boolean,
+    align: {
       type: String,
       default: 'left',
       validator: v => ['left', 'center', 'right'].includes(v)
     },
-    disable: Boolean
+    disable: Boolean,
+    tabindex: [String, Number]
   },
 
   data () {
@@ -58,6 +58,10 @@ export default {
   },
 
   computed: {
+    computedTabIndex () {
+      return this.disable === true || this.innerOpened === true ? -1 : this.tabindex || 0
+    },
+
     openedStyle () {
       let total = this.parent.panels.length
       let opened = this.parent.panels.filter(p => p.innerOpened).length
@@ -116,6 +120,10 @@ export default {
   },
 
   methods: {
+    isOpen () {
+      return this.innerOpened
+    },
+
     open () {
       if (this.disable !== true) {
         this.parent.__activateTab(this.name, false)
@@ -127,7 +135,9 @@ export default {
         this.innerOpened = true
         this.$emit('input', this.innerOpened)
         this.$emit('open')
+        return true
       }
+      return false
     },
 
     close () {
@@ -165,9 +175,9 @@ export default {
       }
 
       const cursor =
-        this.disable === true && this.clickExpand !== true
+        this.disable === true && this.clickIcon !== true
           ? ' cursor-not-allowed'
-          : this.disable !== true && this.clickExpand !== true
+          : this.disable !== true && this.clickIcon !== true
             ? ' cursor-pointer'
             : ''
 
@@ -180,7 +190,7 @@ export default {
             + (this.innerOpened !== true && this.parent.inactiveColor !== void 0 ? ' text-' + this.parent.inactiveColor : '')
             + (this.innerOpened !== true && this.parent.inactiveBgColor !== void 0 ? ' bg-' + this.parent.inactiveBgColor : ''),
           style: combinedStyle,
-          on: (this.disable !== true && this.clickExpand !== true ? onClick : {})
+          on: (this.disable !== true && this.clickIcon !== true ? onClick : {})
         }, [
           iconSlot && iconSlot(),
           iconSlot === void 0 && this.icon !== void 0 && h(QIcon, {
@@ -194,30 +204,30 @@ export default {
           labelSlot && labelSlot(),
           labelSlot === void 0 && h('div', {
             staticClass: 'no-wrap col-grow text-subtitle1'
-              + ' text-' + this.labelPosition,
+              + ' text-' + this.align,
             style: combinedStyle,
           }, this.label),
           this.innerOpened !== true && this.expandIcon !== void 0 && h(QIcon, {
             staticClass: 'col-shrink'
-              + (this.disable === true && this.clickExpand === true ? ' cursor-not-allowed' : '' )
-              + (this.disable !== true && this.clickExpand === true ? ' cursor-pointer' : '' ),
+              + (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '' )
+              + (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : '' ),
             style: combinedStyle,
             props: {
               name: this.expandIcon,
               size: this.iconSize
             },
-            on: (this.disable !== true && this.clickExpand === true ? onClick : {})
+            on: (this.disable !== true && this.clickIcon === true ? onClick : {})
           }),
           this.innerOpened === true && this.expandedIcon !== void 0 && h(QIcon, {
             staticClass: 'col-shrink'
-              + (this.disable === true && this.clickExpand === true ? ' cursor-not-allowed' : '' )
-              + (this.disable !== true && this.clickExpand === true ? ' cursor-pointer' : '' ),
+              + (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '' )
+              + (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : '' ),
           style: combinedStyle,
             props: {
               name: this.expandedIcon,
               size: this.iconSize
             },
-            on: (this.disable !== true && this.clickExpand === true ? onClick : {})
+            on: (this.disable !== true && this.clickIcon === true ? onClick : {})
           })
         ])
     },
@@ -244,9 +254,14 @@ export default {
       props: {
         square: true,
         flat: this.parent.flat
-      }
+      },
+      attrs: {
+        tabindex: this.computedTabIndex,
+        role: 'tab',
+        'aria-selected': this.innerOpened
+      },
     }, [
-      titlebar && titlebar(),
+      titlebar && titlebar({ label: this.label, opened: this.innerOpened, expand: this.expand, expanded: this.expanded }),
       titlebar === void 0 && this.__renderTitlebar(h),
       this.separator === true && h(QSeparator, {
         style: this.visibilityStyle

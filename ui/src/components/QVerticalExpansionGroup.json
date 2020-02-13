@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "docsUrl": "https://hawkeye64.github.io/quasar-ui-qverticalexpansionitem/docs"
+  },
+  "behavior": {
+    "$listeners": true
+  },
+  "props": {
+    "value":{
+      "type": [ "Number", "String", "Array" ],
+      "desc": "Model of the component defining current panel name, or if `multiple` props is used, **must** be an array; Either use this property (along with a listener for 'input' event) OR use v-model directive",
+      "examples": [ "v-model=\"selectedPanels\"" ],
+      "category": "model"
+    },
+    "multiple":{
+      "type": "Boolean",
+      "desc": "When true, turns on the ability to have more the one panel visible at a time. In this case, the `v-model` can only be an array of names that contains the opened panels",
+      "examples": [ "v-model=\"selectedPanels\"" ],
+      "category": "behavior"
+    },
+    "active-color": {
+      "extends": "color",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the active panel",
+      "category": "style"
+    },
+    "active-bg-color": {
+      "extends": "color",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the active panel",
+      "category": "style"
+    },
+    "inactive-color": {
+      "extends": "color",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the inactive panel",
+      "category": "style"
+    },
+    "inactive-bg-color": {
+      "extends": "color",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the inactive panel",
+      "category": "style"
+    },
+    "dense": {
+      "extends": "dense"
+    },
+    "flat": {
+      "extends": "flat"
+    }
+  },
+  "slots": {
+    "default": {
+      "extends": "default"
+    }
+  },
+  "methods": {
+    "isOpened": {
+      "desc": "Check if the specified tab is open",
+      "params": {
+        "name": {
+          "type": [ "Number", "String" ],
+          "desc": "The name of the tab pane",
+          "__exemption": [ "examples" ]
+        }
+      },
+      "examples": [
+        "isOpen('tab-1')"
+      ],
+      "returns": {
+        "type": "Boolean",
+        "desc": "Returns true if the tab panel is opened, otherwise false"
+      }
+    },
+    "openTab": {
+      "desc": "Opens the specified tab panel only if does not have the property `disable` set to true on the tab panel",
+      "params": {
+        "name": {
+          "type": [ "Number", "String" ],
+          "desc": "The name of the tab panel to open",
+          "__exemption": [ "examples" ]
+        }
+      },
+      "examples": [
+        "openTab('tab-1')"
+      ],
+      "returns": {
+        "type": "Boolean",
+        "desc": "Returns true if the tab panel was opened, otherwise false"
+      }
+    },
+    "closeTab": {
+      "desc": "Closes the specified tab panel",
+      "params": {
+        "name": {
+          "type": [ "Number", "String" ],
+          "desc": "The name of the tab panel to close",
+          "__exemption": [ "examples" ]
+        }
+      },
+      "examples": [
+        "closeTab('tab-1')"
+      ]
+    }
+  }
+}

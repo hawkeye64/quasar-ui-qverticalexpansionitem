@@ -56,6 +56,14 @@ export default {
   },
 
   methods: {
+    isOpened (name) {
+      const tab = this.__getTab(name)
+      if (tab) {
+        return tab.isOpened()
+      }
+      return false
+    },
+
     openTab (name) {
       this.__activateTab(name, false)
     },
@@ -89,16 +97,22 @@ export default {
         }
         if (this.tabs.current.includes(name)) {
           // already accounted for
-          return
+          return true
         }
-        this.tabs.current.push(name)
+        const panel = this.__findPanel(name)
+        if (panel && panel.disable !== true) {
+          this.tabs.current.push(name)
+        }
       } else if (this.tabs.current !== name) {
         this.tabs.current = name
         this.__closeAllExcept(name)
       }
-      this.__openTab(name)
-      skipEmit !== true && this.$emit('input', name)
-      skipEmit !== true && this.$emit('open', name)
+      if (this.__openTab(name)) {
+        skipEmit !== true && this.$emit('input', name)
+        skipEmit !== true && this.$emit('open', name)
+        return true
+      }
+      return false
   },
 
     __deactivateTab (name, skipEmit) {
@@ -118,6 +132,11 @@ export default {
       skipEmit !== true && this.$emit('close', name)
     },
 
+    __findPanel (name) {
+      return this.panels.find(panel => panel.name === name)
+    },
+
+
     __closeAllExcept (name) {
       this.panels.forEach(panel => {
         if (panel.name !== name) {
@@ -129,7 +148,11 @@ export default {
 
   render (h) {
     return h('div', {
-      staticClass: 'q-pa-md row items-start q-gutter-md no-wrap'
+      staticClass: 'q-pa-md row items-start q-gutter-md no-wrap',
+      on: {
+        ...this.$listeners
+      },
+      attrs: { role: 'tablist' }
     }, slot(this, 'default'))
   }
 }
