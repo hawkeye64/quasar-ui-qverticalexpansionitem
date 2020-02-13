@@ -26,14 +26,7 @@ export default {
   data () {
     return {
       panels: [],
-      tabs: {
-        current: this.value,
-        activeColor: this.activeColor,
-        activeBgColor: this.activeBgColor,
-        inactiveColor: this.inactiveColor,
-        inactiveBgColor: this.inactiveBgColor,
-        multiple: this.multiple
-      }
+      current: this.value
     }
   },
 
@@ -54,18 +47,6 @@ export default {
   watch: {
     value (name) {
       this.__activateTab(name, true)
-    },
-
-    activeColor (v) {
-      this.tabs.activeColor = v
-    },
-
-    activeBgColor (v) {
-      this.tabs.activeBgColor = v
-    },
-
-    multiple (v) {
-      this.tabs.multiple = v
     }
   },
 
@@ -106,17 +87,17 @@ export default {
 
     __activateTab (name, skipEmit) {
       if (this.multiple === true) {
-        if (Array.isArray(this.tabs.current) !== true) {
-          this.tabs.current = []
+        if (Array.isArray(this.current) !== true) {
+          this.current = []
         }
         const panel = this.__findPanel(name)
         if (panel) {
-          if (panel.disable !== true && this.tabs.current.includes(name) !== true) {
-            this.tabs.current.push(name)
+          if (panel.disable !== true && this.current.includes(name) !== true) {
+            this.current.push(name)
           }
         }
-      } else if (this.tabs.current !== name) {
-        this.tabs.current = name
+      } else if (this.current !== name) {
+        this.current = name
         this.__closeAllExcept(name)
       }
       if (this.__openTab(name)) {
@@ -129,15 +110,15 @@ export default {
 
     __deactivateTab (name, skipEmit) {
       if (this.multiple === true) {
-        const ind = this.tabs.current.indexOf(name)
+        const ind = this.current.indexOf(name)
         if (ind === -1) {
           // already accounted for
           return
         }
-        this.tabs.current.splice(ind, 1)
+        this.current.splice(ind, 1)
       } else {
-        if (this.tabs.current === name) {
-          this.tabs.current = ''
+        if (this.current === name) {
+          this.current = ''
         }
       }
       this.__closeTab(name)

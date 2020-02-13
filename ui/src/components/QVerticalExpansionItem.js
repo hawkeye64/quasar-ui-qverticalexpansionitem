@@ -236,6 +236,7 @@ export default {
       if (this.innerOpened !== true) return
 
       return h(QCardSection, {
+        staticClass: 'q-pa-none',
         style: this.visibilityStyle
       }, slot(this, 'default'))
     }
@@ -248,7 +249,7 @@ export default {
       this.parent.panels.push(this)
     }
 
-    const titlebar = slot(this, 'titlebar')
+    const titlebarSlot = slot(this, 'titlebar')
 
     return h(QCard, {
       staticClass: 'q-ma-none',
@@ -263,8 +264,8 @@ export default {
         'aria-selected': this.innerOpened
       },
     }, [
-      titlebar && titlebar({ label: this.label, opened: this.innerOpened, expand: this.expand, expanded: this.expanded }),
-      titlebar === void 0 && this.__renderTitlebar(h),
+      titlebarSlot && titlebarSlot({ label: this.label, opened: this.innerOpened, expand: this.expand, expanded: this.expanded }),
+      titlebarSlot === void 0 && this.__renderTitlebar(h),
       this.separator === true && h(QSeparator, {
         style: this.visibilityStyle
       }),
