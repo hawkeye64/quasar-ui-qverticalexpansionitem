@@ -8,34 +8,34 @@
   "props": {
     "value":{
       "type": [ "Number", "String", "Array" ],
-      "desc": "Model of the component defining current panel name, or if `multiple` props is used, **must** be an array; Either use this property (along with a listener for 'input' event) OR use v-model directive",
+      "desc": "Model of the component defining current tab panel name, or if `multiple` props is used, **must** be an array; Either use this property (along with a listener for 'input' event) OR use v-model directive",
       "examples": [ "v-model=\"selectedPanels\"" ],
       "category": "model"
     },
     "multiple":{
       "type": "Boolean",
-      "desc": "When true, turns on the ability to have more the one panel visible at a time. In this case, the `v-model` can only be an array of names that contains the opened panels",
+      "desc": "When true, turns on the ability to have more the one tab panel visible at a time. In this case, the `v-model` can only be an array of names that contains the opened tab panels",
       "examples": [ "v-model=\"selectedPanels\"" ],
       "category": "behavior"
     },
     "active-color": {
       "extends": "color",
-      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the active panel",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the active tab panel",
       "category": "style"
     },
     "active-bg-color": {
       "extends": "color",
-      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the active panel",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the active tab panel",
       "category": "style"
     },
     "inactive-color": {
       "extends": "color",
-      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the inactive panel",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar text of the inactive tab panel",
       "category": "style"
     },
     "inactive-bg-color": {
       "extends": "color",
-      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the inactive panel",
+      "desc": "The [Quasar Color Palette](https://quasar.dev/style/color-palette) color to be attributed to the titlebar background of the inactive tab panel",
       "category": "style"
     },
     "dense": {
@@ -69,7 +69,7 @@
       }
     },
     "openTab": {
-      "desc": "Opens the specified tab panel only if does not have the property `disable` set to true on the tab panel",
+      "desc": "Opens the specified tab panel only if it does not have the property `disable` set to true on the tab panel",
       "params": {
         "name": {
           "type": [ "Number", "String" ],

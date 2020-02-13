@@ -14,7 +14,7 @@
     },
     "name":{
       "type": ["Number", "String"],
-      "desc": "A unique value used to identify this panel",
+      "desc": "A unique value used to identify this tab panel",
       "examples": [ "name=\"panel-1\"" ],
       "category": "model"
     },
@@ -56,7 +56,7 @@
     },
     "click-icon": {
       "type": "Boolean",
-      "desc": "If true, then only the expand/expanded icons can be used to open/close the panel instead of the titlebar",
+      "desc": "If true, then only the expand/expanded icons can be used to open/close the tab panel instead of the titlebar",
       "category": "style"
     },
     "align": {
@@ -128,7 +128,7 @@
       }
     },
     "open": {
-      "desc": "Opens the tab panel only if does not have the property `disable` set to true onthe tab panel",
+      "desc": "Opens the tab panel only if it does not have the property `disable` set to true onthe tab panel",
       "examples": [
         "open()"
       ],

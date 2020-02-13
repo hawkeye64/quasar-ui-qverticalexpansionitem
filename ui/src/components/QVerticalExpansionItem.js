@@ -107,7 +107,7 @@ export default {
       if (this.parent.dense === true) {
         return 43
       }
-      return 53
+      return 60
     }
   },
 
@@ -233,6 +233,8 @@ export default {
     },
 
     __renderBody (h) {
+      if (this.innerOpened !== true) return
+
       return h(QCardSection, {
         style: this.visibilityStyle
       }, slot(this, 'default'))
