@@ -9,6 +9,7 @@ By default, clicking the titlebar expands/contracts the QVerticalExpansionItem. 
       <example-title title="QVerticalExpansionItem" />
       <example-viewer title="Basic" file="Basic" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Separator" file="Separator" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Default Open" file="DefaultOpened" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Icons" file="Icons" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
 You can use the `expand-icon` and `expanded-icon` properties to define different icons when the tab panel expended/collapsed.
@@ -29,6 +30,7 @@ The `click-icon` property only allows the `expand-icon` and `expanded-icon` to b
 Using the `multiple` property on `QVerticalExpansionGroup` allows you to have multiple tab panels opened at the same time.
         </q-markdown>
       </example-viewer>
+      <example-viewer title="Multiple Opened" file="MultipleOpened" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Flat" file="Flat" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Disable" file="Disable" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Color" file="Color" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
@@ -70,11 +72,13 @@ export default {
     this.addToToc('QVerticalExpansionItem')
     this.addToToc('Basic', 2)
     this.addToToc('Separator', 2)
+    this.addToToc('Default Open', 2)
     this.addToToc('Icons', 2)
     this.addToToc('Click Icon', 2)
     this.addToToc('Label', 2)
     this.addToToc('Dense', 2)
     this.addToToc('Multiple', 2)
+    this.addToToc('Multiple Opened', 2)
     this.addToToc('Flat', 2)
     this.addToToc('Disable', 2)
     this.addToToc('Color', 2)

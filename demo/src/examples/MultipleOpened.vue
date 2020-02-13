@@ -1,6 +1,9 @@
 <template>
   <div style="max-width: 800px; width: 100%;">
-    <q-vertical-expansion-group style="height: 400px;">
+    <q-vertical-expansion-group
+      v-model="tab"
+      multiple
+      style="height: 400px;">
       <q-vertical-expansion-item
         v-for="tab in tabs"
         :key="tab.index"
@@ -9,24 +12,7 @@
         icon="calendar_today"
         expandIcon="expand_more"
         expandedIcon="expand_less"
-        :disable="tab.index % 2 === 0"
-      >
-        {{ lorem }}
-      </q-vertical-expansion-item>
-    </q-vertical-expansion-group>
-
-    <p>With click-icon</p>
-    <q-vertical-expansion-group style="height: 400px;">
-      <q-vertical-expansion-item
-        v-for="tab in tabs"
-        :key="tab.index"
-        :label="'title - ' + tab.index"
-        separator
-        icon="calendar_today"
-        expandIcon="expand_more"
-        expandedIcon="expand_less"
-        :disable="tab.index % 2 === 0"
-        click-icon
+        :name="tab.name"
       >
         {{ lorem }}
       </q-vertical-expansion-item>
@@ -35,11 +21,12 @@
 </template>
 
 <script>
-const model = [...Array(7).keys()].map(i => ({ index: i }))
+const model = [...Array(7).keys()].map(i => ({ index: i, name: `tab-${i}` }))
 
 export default {
   data () {
     return {
+      tab: ['tab-2', 'tab-4'],
       tabs: model,
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum ex, aliquet sit amet semper a, dapibus id elit. Mauris nibh orci, lacinia at ex ut, mattis ultricies ante. In congue nunc mauris, vehicula aliquam neque pretium non. Aenean interdum a libero in vulputate. Praesent est eros, facilisis ut leo sit amet, ultricies mattis mi. Pellentesque ornare enim ut lacus eleifend, dignissim ornare nisl pharetra. Etiam commodo tortor risus, id feugiat nisi faucibus id. Nunc pellentesque tortor quis iaculis facilisis. Donec accumsan dui vitae orci faucibus, ac lacinia nunc molestie. Morbi mollis commodo ante quis condimentum.'
     }
