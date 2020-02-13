@@ -37,6 +37,20 @@ export default {
     }
   },
 
+  mounted () {
+    if (this.value !== void 0) {
+      this.$nextTick(() => {
+        if (Array.isArray(this.value)) {
+          this.value.forEach(name => {
+            this.__activateTab(name, false)
+          })
+        } else {
+          this.__activateTab(this.value, false)
+        }
+      })
+    }
+  },
+
   watch: {
     value (name) {
       this.__activateTab(name, true)
@@ -95,13 +109,11 @@ export default {
         if (Array.isArray(this.tabs.current) !== true) {
           this.tabs.current = []
         }
-        if (this.tabs.current.includes(name)) {
-          // already accounted for
-          return true
-        }
         const panel = this.__findPanel(name)
-        if (panel && panel.disable !== true) {
-          this.tabs.current.push(name)
+        if (panel) {
+          if (panel.disable !== true && this.tabs.current.includes(name) !== true) {
+            this.tabs.current.push(name)
+          }
         }
       } else if (this.tabs.current !== name) {
         this.tabs.current = name
