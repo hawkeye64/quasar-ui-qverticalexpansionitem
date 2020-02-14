@@ -4,7 +4,9 @@
       <q-markdown>
 Two components are used to make the following examples: `QVerticalExpansionGroup` and `QVerticalExpansionItem`. The QVerticalExpansionGroup must always be a parent to QVerticalExpansionItem, but you can have many child QVerticalExpansionItem's that you want.
 
-By default, clicking the titlebar expands/contracts the QVerticalExpansionItem. Also, by default, you can only have one vertical expansion tab panel open at a time. However, you can change these defaults with properties, as explained below.
+`QVerticalExpansionItem` is focusable (use tab key to navigate and enter key to toggle) and aria-aware.
+
+By default, clicking the titlebar expands/contracts the `QVerticalExpansionItem`. Also, by default, you can only have one vertical expansion tab panel open at a time. However, you can change these defaults with properties, as explained below.
       </q-markdown>
       <example-title title="QVerticalExpansionItem" />
       <example-viewer title="Basic" file="Basic" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
@@ -31,13 +33,13 @@ Using the `multiple` property on `QVerticalExpansionGroup` allows you to have mu
         </q-markdown>
       </example-viewer>
       <example-viewer title="Multiple Opened" file="MultipleOpened" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
-      <example-viewer title="Flat" file="Flat" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
-      <example-viewer title="Disable" file="Disable" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Scroll" file="Scroll" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
 Use the `scroll` property to add an internal scroll area for the body content. This will also keep the titlebar from scolling with the rest of the content.
         </q-markdown>
       </example-viewer>
+      <example-viewer title="Flat" file="Flat" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Disable" file="Disable" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Color" file="Color" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Focus Color" file="FocusColor" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Images" file="Images" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
@@ -88,9 +90,9 @@ export default {
     this.addToToc('Dense', 2)
     this.addToToc('Multiple', 2)
     this.addToToc('Multiple Opened', 2)
+    this.addToToc('Scroll', 2)
     this.addToToc('Flat', 2)
     this.addToToc('Disable', 2)
-    this.addToToc('Scroll', 2)
     this.addToToc('Color', 2)
     this.addToToc('Focus Color', 2)
     this.addToToc('Images', 2)
