@@ -2,8 +2,8 @@
   <div>
     <section class="page-header">
       <div class="donate"><a :href="donateUrl" target="_blank" title="Donate"><i class="fas fa-heart" style="color: red"></i></a></div>
-      <div class="text-h1 project-name">{{ title }}</div>
-      <div class="text-h2 project-tagline">{{ tagline }}</div>
+      <div class="project-name">{{ title }}</div>
+      <div class="project-tagline">{{ tagline }}</div>
       <q-btn type="a" :href="locationUrl" target="_blank" class="btn" label="View on GitHub" no-caps flat/>
       <q-btn to="/docs" class="btn" label="Docs" no-caps flat/>
       <q-btn to="/examples" class="btn" label="Examples" no-caps flat/>

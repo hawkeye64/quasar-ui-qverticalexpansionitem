@@ -84,9 +84,50 @@ a
 .project-name
   font-weight 700
 
-@media screen and (min-width: 42em) and (max-width: 64em)
+.page-header
+  position: relative
+  color: #fff
+  text-align: center
+  background-color: $bgColor
+  background-image: linear-gradient(120deg, $bgColor, $fgColor)
+
+@media screen and (min-width: 64em)
+  .page-header
+    padding: 1rem 2rem
+    font-size: 2.5rem
+    line-height: unset;
+
+  .project-tagline
+    font-size: 1.5rem
+
+  .quasar
+    font-size: 1.15rem
+
+  .byline
+    font-size: 1.15rem
+
+@media screen and (max-width: 64em) and (min-width: 42em)
   .btn
     font-size: 0.9rem
+
+  .page-header
+    padding: 1rem 2rem
+    font-size: 3.0rem
+    line-height: unset;
+
+  .project-name
+    font-size: 2.0rem
+    line-height: unset;
+
+  .project-tagline
+    font-size: 1.3rem
+    line-height: unset;
+
+  .quasar
+    font-size: 1.15rem
+
+  .byline
+    font-size: 1.15rem
 
 @media screen and (max-width: 42em)
   .btn
@@ -99,22 +140,6 @@ a
     left: 0
     align-text center
 
-.page-header
-  position: relative
-  color: #fff
-  text-align: center
-  background-color: $bgColor
-  background-image: linear-gradient(120deg, $bgColor, $fgColor)
-
-@media screen and (min-width: 64em)
-  .page-header
-    padding: 1rem 2rem
-
-@media screen and (min-width: 42em) and (max-width: 64em)
-  .page-header
-    padding: .5rem 1rem
-
-@media screen and (max-width: 42em)
   .page-header
     padding: .5rem 1rem
 
@@ -122,40 +147,21 @@ a
     font-weight: 700
     margin-top: 0
     margin-bottom: 0.1rem
-
-@media screen and (min-width: 64em)
-  .project-name
-    font-size: 4.25rem
-    line-height: unset;
-
-@media screen and (min-width: 42em) and (max-width: 64em)
-  .project-name
-    font-size: 3.25rem
-    line-height: unset;
-
-@media screen and (max-width: 42em)
-  .project-name
-    font-size: 2.75rem
+    font-size: 1.5rem
     line-height: unset;
 
   .project-tagline
     font-weight: normal
     opacity: 0.7
-
-@media screen and (min-width: 64em)
-  .project-tagline
-    font-size: 1.75rem
+    font-size: 0.85rem
     line-height: unset;
 
-@media screen and (min-width: 42em) and (max-width: 64em)
-  .project-tagline
-    font-size: 1.25rem
-    line-height: unset;
+  .quasar
+    font-size: 0.75rem
 
-@media screen and (max-width: 42em)
-  .project-tagline
-    font-size: 1rem
-    line-height: unset;
+  .byline
+    font-size: 0.75rem
+
 
 .main-content :first-child
   margin-top: 0
