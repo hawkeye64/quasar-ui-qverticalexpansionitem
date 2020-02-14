@@ -1,7 +1,7 @@
 QVerticalExpansionItem
 ===
 
-**QVerticalExpansionItem** is a component for managing a group of Vertical Expansion tab panels in your Quasar application.
+**QVerticalExpansionItem** along with **QVerticalExpansionGroup** are components for managing a group of Vertical Expansion tab panels in your Quasar application.
 
 # Installation Types
 
