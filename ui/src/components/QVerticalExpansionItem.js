@@ -45,7 +45,8 @@ export default {
 
   data () {
     return {
-      innerOpened: false
+      innerOpened: false,
+      hasFocus: false
     }
   },
 
@@ -56,11 +57,19 @@ export default {
         this.open()
       }
     }
+
+    this.$el.addEventListener('focusin', this.__focusIn)
+    this.$el.addEventListener('focusout', this.__focusOut)
+  },
+
+  beforeDestroy () {
+    this.$el.removeEventListener('focusin', this.__focusIn)
+    this.$el.removeEventListener('focusout', this.__focusOut)
   },
 
   computed: {
     computedTabIndex () {
-      return this.disable === true || this.innerOpened === true ? -1 : this.tabindex || 0
+      return this.disable === true || this.innerOpened === true ? 0 : this.tabindex || 0
     },
 
     openedStyle () {
@@ -71,7 +80,8 @@ export default {
         overflow: 'auto',
         height: '100%',
         width: `calc((100% - ${closed * this.innerWidthHeight}px) / ${opened})`,
-        transition: 'all 250ms'
+        transition: 'all 250ms',
+        zIndex: this.hasFocus ? 1 : void 0
       }
     },
 
@@ -79,7 +89,8 @@ export default {
       return {
         height: '100%',
         width: this.innerWidthHeight + 'px',
-        transition: 'all 250ms'
+        transition: 'all 250ms',
+        zIndex: this.hasFocus ? 1 : void 0
       }
     },
 
@@ -164,6 +175,14 @@ export default {
       }
     },
 
+    __focusIn (e) {
+      this.hasFocus = true
+    },
+
+    __focusOut (e) {
+      this.hasFocus = false
+    },
+
     __findPanel () {
       // find this panel in list of panels
       return this.parent.panels.find(panel => panel.name === this.name)
@@ -192,6 +211,7 @@ export default {
       return h('div', {
           staticClass: 'row justify-evenly items-center'
             + cursor
+            + (this.disable === true ? '' : ' q-focusable q-hoverable')
             + (this.innerOpened === true ? '' : ' full-height')
             + (this.innerOpened === true && this.parent.activeColor !== void 0 ? ' text-' + this.parent.activeColor : '')
             + (this.innerOpened === true && this.parent.activeBgColor !== void 0 ? ' bg-' + this.parent.activeBgColor : '')
@@ -244,7 +264,7 @@ export default {
       if (this.innerOpened !== true) return
 
       return h(QCardSection, {
-        staticClass: 'q-pa-none q-ma-none relative-position',
+        staticClass: 'q-vertical-expansion-item__body q-pa-none q-ma-none relative-position',
         style: this.visibilityStyle
       }, slot(this, 'default'))
     }
@@ -260,7 +280,7 @@ export default {
     const titlebarSlot = slot(this, 'titlebar')
 
     return h(QCard, {
-      staticClass: 'q-ma-none',
+      staticClass: 'q-vertical-expansion-item q-ma-none',
       style: (this.innerOpened === true ? this.openedStyle : this.closedStyle),
       props: {
         square: true,

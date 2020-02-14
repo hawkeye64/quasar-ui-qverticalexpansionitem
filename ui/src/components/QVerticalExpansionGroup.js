@@ -141,7 +141,7 @@ export default {
 
   render (h) {
     return h('div', {
-      staticClass: 'q-pa-none q-ma-none row items-start no-wrap',
+      staticClass: 'q-vertical-expansion-group q-pa-none q-ma-none row items-start no-wrap',
       on: {
         ...this.$listeners
       },

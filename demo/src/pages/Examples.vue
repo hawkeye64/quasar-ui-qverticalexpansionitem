@@ -12,7 +12,7 @@ By default, clicking the titlebar expands/contracts the QVerticalExpansionItem. 
       <example-viewer title="Default Open" file="DefaultOpened" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Icons" file="Icons" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
-You can use the `expand-icon` and `expanded-icon` properties to define different icons when the tab panel expended/collapsed.
+You can use the `expand-icon` and `expanded-icon` properties to define different icons when the tab panel is expanded/collapsed.
 ::: warning
 Not all icon sets work with rotation in the collapsed state, so make sure you use ones that work.
 :::
@@ -20,10 +20,10 @@ Not all icon sets work with rotation in the collapsed state, so make sure you us
       </example-viewer>
       <example-viewer title="Click Icon" file="ClickIcon" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
-The `click-icon` property only allows the `expand-icon` and `expanded-icon` to be clicked in order to exapnd/collapse the tab panel.
+The `click-icon` property only allows the `expand-icon` and `expanded-icon` to be clicked in order to expand/collapse the tab panel.
         </q-markdown>
       </example-viewer>
-      <example-viewer title="Label" file="Label" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Align Label" file="Label" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Dense" file="Dense" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Multiple" file="Multiple" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
@@ -78,7 +78,7 @@ export default {
     this.addToToc('Default Open', 2)
     this.addToToc('Icons', 2)
     this.addToToc('Click Icon', 2)
-    this.addToToc('Label', 2)
+    this.addToToc('Align Label', 2)
     this.addToToc('Dense', 2)
     this.addToToc('Multiple', 2)
     this.addToToc('Multiple Opened', 2)
