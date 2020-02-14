@@ -1,4 +1,4 @@
-import { QCard, QSeparator, QCardSection, QIcon } from 'quasar'
+import { QCard, QSeparator, QCardSection, QIcon, QScrollArea } from 'quasar'
 import { slot } from 'quasar/src/utils/slot.js'
 import { stopAndPrevent } from 'quasar/src/utils/event.js'
 
@@ -40,7 +40,8 @@ export default {
       validator: v => ['left', 'center', 'right'].includes(v)
     },
     disable: Boolean,
-    tabindex: [String, Number]
+    tabindex: [String, Number],
+    scroll: Boolean
   },
 
   data () {
@@ -112,6 +113,17 @@ export default {
     paddingStyle () {
       return {
         padding: (this.parent.dense ? '3px' : '8px')
+      }
+    },
+
+    scrollStyle () {
+      if (this.$el) {
+        const rect = this.$el.getBoundingClientRect()
+        const height = rect.height - this.innerWidthHeight
+        return {
+          height: (height - 1) + 'px',
+          width: '100%'
+        }
       }
     },
 
@@ -264,11 +276,18 @@ export default {
       if (this.innerOpened !== true) return
 
       return h(QCardSection, {
-        staticClass: 'q-vertical-expansion-item__body q-pa-none q-ma-none relative-position',
+        staticClass: 'q-vertical-expansion-item__body no-scroll q-pa-none q-ma-none relative-position',
         style: this.visibilityStyle
-      }, slot(this, 'default'))
+      }, [
+        this.scroll === true && h(QScrollArea, {
+        style: this.scrollStyle,
+      }, slot(this, 'default')),
+      this.scroll !== true && slot(this, 'default')
+    ])
     }
   },
+
+  // slot(this, 'default')
 
   render (h) {
     const panel = this.__findPanel()

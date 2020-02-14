@@ -69,6 +69,11 @@
     "disable": {
       "extends": "disable"
     },
+    "scroll": {
+      "type": "Boolean",
+      "desc": "Adds an internal scoll area to the inner content. This also keeps the titlebar from scrolling",
+      "category": "behavior"
+    },
     "tabindex": {
       "extends": "tabindex"
     }
