@@ -6,6 +6,8 @@ QVerticalExpansionItem (Vue Plugin, UMD and Quasar App Extension)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hawkeye64/quasar-ui-qverticalexpansionitem.svg)]()
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/hawkeye64/quasar-ui-qverticalexpansionitem.svg)]()
 
+![QVerticalExpansionItem](https://raw.githubusercontent.com/quasarframework/quasar-ui-qiconpicker/dev/demo/src/statics/q-vertical-expansion-item.png)
+
 # Structure
 
 * [/ui](ui) - standalone npm package
