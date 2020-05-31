@@ -1,4 +1,3 @@
-// import { QBadge, QResizeObserver } from 'quasar'
 import { slot } from 'quasar/src/utils/slot.js'
 
 export default {
@@ -106,7 +105,7 @@ export default {
         return true
       }
       return false
-  },
+    },
 
     __deactivateTab (name, skipEmit) {
       if (this.multiple === true) {
@@ -128,7 +127,6 @@ export default {
     __findPanel (name) {
       return this.panels.find(panel => panel.name === name)
     },
-
 
     __closeAllExcept (name) {
       this.panels.forEach(panel => {

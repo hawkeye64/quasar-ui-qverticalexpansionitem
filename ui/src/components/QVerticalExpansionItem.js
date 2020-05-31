@@ -74,9 +74,9 @@ export default {
     },
 
     openedStyle () {
-      let total = this.parent.panels.length
-      let opened = this.parent.panels.filter(p => p.innerOpened).length
-      let closed = total - opened
+      const total = this.parent.panels.length
+      const opened = this.parent.panels.filter(p => p.innerOpened).length
+      const closed = total - opened
       return {
         overflow: 'auto',
         height: '100%',
@@ -104,7 +104,7 @@ export default {
       return {}
     },
 
-    visibilityStyle() {
+    visibilityStyle () {
       return {
         visibility: (this.innerOpened === true ? 'visible' : 'hidden')
       }
@@ -176,8 +176,8 @@ export default {
 
     toggle () {
       this.innerOpened !== true
-      ? this.parent.__activateTab(this.name, false)
-      : this.parent.__deactivateTab(this.name, false)
+        ? this.parent.__activateTab(this.name, false)
+        : this.parent.__deactivateTab(this.name, false)
     },
 
     __toggleKeyboard (e) {
@@ -221,55 +221,55 @@ export default {
             : ''
 
       return h('div', {
-          staticClass: 'row justify-evenly items-center'
-            + cursor
-            + (this.disable === true ? '' : ' q-focusable q-hoverable')
-            + (this.innerOpened === true ? '' : ' full-height')
-            + (this.innerOpened === true && this.parent.activeColor !== void 0 ? ' text-' + this.parent.activeColor : '')
-            + (this.innerOpened === true && this.parent.activeBgColor !== void 0 ? ' bg-' + this.parent.activeBgColor : '')
-            + (this.innerOpened !== true && this.parent.inactiveColor !== void 0 ? ' text-' + this.parent.inactiveColor : '')
-            + (this.innerOpened !== true && this.parent.inactiveBgColor !== void 0 ? ' bg-' + this.parent.inactiveBgColor : ''),
+        staticClass: 'row justify-evenly items-center' +
+          cursor +
+          (this.disable === true ? '' : ' q-focusable q-hoverable') +
+          (this.innerOpened === true ? '' : ' full-height') +
+          (this.innerOpened === true && this.parent.activeColor !== void 0 ? ' text-' + this.parent.activeColor : '') +
+          (this.innerOpened === true && this.parent.activeBgColor !== void 0 ? ' bg-' + this.parent.activeBgColor : '') +
+          (this.innerOpened !== true && this.parent.inactiveColor !== void 0 ? ' text-' + this.parent.inactiveColor : '') +
+          (this.innerOpened !== true && this.parent.inactiveBgColor !== void 0 ? ' bg-' + this.parent.inactiveBgColor : ''),
+        style: combinedStyle,
+        on: (this.disable !== true && this.clickIcon !== true ? onClick : {})
+      }, [
+        iconSlot && iconSlot(),
+        iconSlot === void 0 && this.icon !== void 0 && h(QIcon, {
+          staticClass: 'col-shrink',
           style: combinedStyle,
-          on: (this.disable !== true && this.clickIcon !== true ? onClick : {})
-        }, [
-          iconSlot && iconSlot(),
-          iconSlot === void 0 && this.icon !== void 0 && h(QIcon, {
-            staticClass: 'col-shrink',
-            style: combinedStyle,
-            props: {
-              name: this.icon,
-              size: this.iconSize
-            }
-          }),
-          labelSlot && labelSlot(),
-          labelSlot === void 0 && h('div', {
-            staticClass: 'no-wrap col-grow text-subtitle1'
-              + ' text-' + this.align,
-            style: combinedStyle,
-          }, this.label),
-          this.innerOpened !== true && this.expandIcon !== void 0 && h(QIcon, {
-            staticClass: 'col-shrink'
-              + (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '' )
-              + (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : '' ),
-            style: combinedStyle,
-            props: {
-              name: this.expandIcon,
-              size: this.iconSize
-            },
-            on: (this.disable !== true && this.clickIcon === true ? onClick : {})
-          }),
-          this.innerOpened === true && this.expandedIcon !== void 0 && h(QIcon, {
-            staticClass: 'col-shrink'
-              + (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '' )
-              + (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : '' ),
+          props: {
+            name: this.icon,
+            size: this.iconSize
+          }
+        }),
+        labelSlot && labelSlot(),
+        labelSlot === void 0 && h('div', {
+          staticClass: 'no-wrap col-grow text-subtitle1' +
+              ' text-' + this.align,
+          style: combinedStyle
+        }, this.label),
+        this.innerOpened !== true && this.expandIcon !== void 0 && h(QIcon, {
+          staticClass: 'col-shrink' +
+              (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '') +
+              (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : ''),
           style: combinedStyle,
-            props: {
-              name: this.expandedIcon,
-              size: this.iconSize
-            },
-            on: (this.disable !== true && this.clickIcon === true ? onClick : {})
-          })
-        ])
+          props: {
+            name: this.expandIcon,
+            size: this.iconSize
+          },
+          on: (this.disable !== true && this.clickIcon === true ? onClick : {})
+        }),
+        this.innerOpened === true && this.expandedIcon !== void 0 && h(QIcon, {
+          staticClass: 'col-shrink' +
+              (this.disable === true && this.clickIcon === true ? ' cursor-not-allowed' : '') +
+              (this.disable !== true && this.clickIcon === true ? ' cursor-pointer' : ''),
+          style: combinedStyle,
+          props: {
+            name: this.expandedIcon,
+            size: this.iconSize
+          },
+          on: (this.disable !== true && this.clickIcon === true ? onClick : {})
+        })
+      ])
     },
 
     __renderBody (h) {
@@ -280,10 +280,10 @@ export default {
         style: this.visibilityStyle
       }, [
         this.scroll === true && h(QScrollArea, {
-        style: this.scrollStyle,
-      }, slot(this, 'default')),
-      this.scroll !== true && slot(this, 'default')
-    ])
+          style: this.scrollStyle
+        }, slot(this, 'default')),
+        this.scroll !== true && slot(this, 'default')
+      ])
     }
   },
 
@@ -312,7 +312,7 @@ export default {
         tabindex: this.computedTabIndex,
         role: 'tab',
         'aria-selected': this.innerOpened
-      },
+      }
     }, [
       titlebarSlot && titlebarSlot({ label: this.label, opened: this.innerOpened, expand: this.expand, expanded: this.expanded }),
       titlebarSlot === void 0 && this.__renderTitlebar(h),
